@@ -1,0 +1,41 @@
+mysql -h
+mysql -u root
+mysql -u root -p
+
+show databases;
+use mysql;
+show tables;
+
+select * from user;
+
+use sys
+show tables;
+
+// boshqa bazadagi jadvalni chaqirish
+// yoki bazani tanlamasdan turib
+select * from mysql.user;
+
+CREATE DATABASE exampledb;
+DROP DATABASE exampledb;
+CREATE DATABASE exampledb DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE students (
+    id int,
+    full_name varchar(255),
+    birth_date date,
+    address varchar(255),
+	group_id int
+);
+
+CREATE TABLE all_groups (
+    id int,
+    name varchar(255),
+	teacher_id int
+);
+
+CREATE TABLE teachers (
+    id int,
+    full_name varchar(255)
+);
+
+DROP TABLE teachers;
