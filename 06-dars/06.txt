@@ -1,0 +1,106 @@
+# 6-dars
+# bitta talaba qo'shib qoydim
+
+1. select * from students;
+2. select full_name, birth_date, address from students;
+3. select full_name as "FIO", address as "Manzil" from students;
+
+# kalit sozlarni katta harflarda yozishga odatlaning
+4. SELECT DISTINCT group_id from students;
+
+# bu yerda bolishi mumkin (oylik, yosh, ...)
+SELECT MIN(id) from students;
+SELECT MAX(id) from students;
+
+# UPPER = UCASE
+# LOWER = LCASE
+SELECT UPPER(full_name) from students; # katta harfga otqazadi
+SELECT LOWER(full_name) from students; # kichik harfga otqazadi
+SELECT LENGTH(full_name) from students; # uzunligini chiqaradi
+
+5. SELECT COUNT(*) FROM students;
+5.2 SELECT COUNT(*) as "talabalar soni" FROM students;
+
+# AVG o'rtacha qiymat
+SELECT AVG(id) FROM students; # bu yerda misol uchun oylik maosh qoyiladi
+SELECT AVG(CAST(id as float)) FROM students;
+SELECT SUM(id) FROM students; # bu yerda misol uchun oylik maosh qoyiladi
+
+6. SELECT COUNT(DISTINCT group_id) from students;
+6.2 SELECT COUNT(DISTINCT group_id) as "Guruhlat soni" from students;
+
+7. SELECT CONCAT(full_name, ', ', address) AS "FIO va manzil" FROM students;
+
+8. SELECT * FROM students id ORDER BY id;
+8.2 SELECT * FROM students id ORDER BY id DESC;
+
+9. SELECT * FROM students id ORDER BY id DESC LIMIT 2;
+
+# group by bir xillardan faqat bittasini oladi, qoganini tashlab yuboradi
+# bu filtrlash uchun kerak
+10. SELECT * FROM students id GROUP BY group_id;
+10. SELECT * FROM students id GROUP BY group_id ORDER BY id DESC;
+
+SELECT * FROM students WHERE address='Andijon';
+================================================================
+2-qism
+Bilishimiz kerak:
+Mantiqil amallar (Informatika 8-sinf 1-dars)
+================================================================
+11. SELECT * FROM students WHERE address='Andijon';
+11.2 SELECT * FROM students WHERE group_id='1';
+11.2.2 SELECT * FROM students WHERE group_id=1;  # bundan qilsa boladi int b-ganligi uchun
+
+11.3 SELECT * FROM students WHERE full_name LIKE 'Um%';
+11.3.2 SELECT * FROM students WHERE full_name LIKE '%aziz%';
+11.3.3 SELECT * FROM students WHERE address LIKE '_ndijon'; # qandaydir bitta belgi bor
+
+12.
+SELECT * from students
+where address IN ('andijon', 'Samarqand');
+
+12.2
+SELECT * from students
+where address NOT IN ('andijon', 'Samarqand');
+
+13. SELECT * FROM students WHERE address is NULL;
+13.2 SELECT * FROM students WHERE address is NOT NULL;
+
+14. SELECT * FROM students WHERE address='Andijon';
+14.2 SELECT * FROM students WHERE address='Andijon' AND group_id=1;
+
+# bu usul notog'ri chunki (1 or 0 and 1 = 1)
+# yerda group_id 2 yam chiqib qoladi
+14.3 SELECT * FROM students WHERE address='Andijon' OR address='Toshkent' AND group_id=1;
+
+# (1 or 0) and 1
+14.4 SELECT * FROM students WHERE (address='Andijon' OR address='Toshkent') AND group_id=1;
+# Mantiqil amallar (Informatika 8-sinf 1-dars)
+
+15. SELECT * FROM students WHERE id>2;
+15.2 SELECT * FROM students WHERE id>2 and id<5;
+15.3 SELECT * FROM students WHERE id>=2 and id<5;
+15.4 SELECT * FROM students WHERE id BETWEEN 2 and 4; # between orqali korish
+15.5 SELECT * FROM students WHERE id BETWEEN 2 and 4 AND group_id=2;
+
+16. 2 xil usul
+# eng katta id lik talabani korish 
+SELECT * FROM students WHERE id = (SELECT MAX(id) FROM students); #searching algoritm orqali
+SELECT * FROM students ORDER By id DESC LIMIT 1; # sorting algoritm orqali
+# savol bu yerda qaysi biri tez ishledi?. komentariyaga yozing
+# javob: (1-usul menimcha)
+
+=========================================================
+#ketma ketlik shundan bo'ladi
+SELECT * FROM students
+WHERE group_id = '1'
+GROUP BY group_id
+ORDER BY group_id
+LIMIT 10;
+
+JOIN haqidaga darsimizda yana selectga qaytamiz!
+
+# ushbu kodlarni textni kerak bosa komentariyaga yozilar, 
+telegram kanalimizga tashlab beramiz
+
+# ushbu kodlar telegram kanalimiz tashlab qo'yamiz
