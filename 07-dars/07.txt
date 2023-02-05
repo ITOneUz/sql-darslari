@@ -1,0 +1,36 @@
+# 7-dars
+
+# oynani tozalash
+system cls
+
+select * from students;
+select * from teachers;
+select * from all_groups;
+
+# self join ham mavjud, unda bitta jadval ikki xil ko'rinishda bog'lanadi. 
+cross join ham bor.
+
+select * from students inner join all_groups on students.group_id=all_groups.id; 
+select * from students left join all_groups on students.group_id=all_groups.id; 
+select * from students right join all_groups on students.group_id=all_groups.id; 
+
+# full outer join = full join
+# full join mysql da ishlamadi. buni quyidagicha ishlatish mumkin.
+select * from students left join all_groups on students.group_id=all_groups.id
+union all
+select * from students right join all_groups on students.group_id=all_groups.id; 
+
+select s.full_name, g.name  from students s full join all_groups g on s.group_id=g.id; 
+
+# ma'lum maydonlarni chiqarish
+select students.full_name, students.birth_date, students.address, all_groups.name  from students join all_groups on students.group_id=all_groups.id; 
+
+# maydonlarga nom berish
+select students.full_name 'FIO', students.birth_date 'sana', students.address 'manzil', all_groups.name 'guruh' from students join all_groups on students.group_id=all_groups.id; 
+
+# jadval nomini qisqartirib ishlash
+select s.full_name, s.birth_date, s.address, g.name  from students s join all_groups g on s.group_id=g.id; 
+
+# where bilan ishlash
+select * from students join all_groups on students.group_id=all_groups.id;
+select * from students join all_groups on students.group_id=all_groups.id where teacher_id = 2;
