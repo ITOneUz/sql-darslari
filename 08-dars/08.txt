@@ -1,0 +1,28 @@
+# 8-dars
+
+# birinchi birorta jadval yaratib olamiz
+
+CREATE TABLE jobs (
+    id int,
+    name varchar(255)
+);
+
+# ustun qo'shish
+alter table jobs
+add address varchar(255);
+
+describe jobs;
+
+# kerakmas ustunni olib tashlash
+alter table jobs
+drop column address;
+
+# ustun nomini o'zgartirish
+alter table jobs
+rename column address to addr;
+
+# ustunni tipini ozgartirish
+alter table jobs
+modify column addr varchar(100);
+
+drop table jobs;
