@@ -1,0 +1,47 @@
+# 4-dars
+
+CREATE TABLE test (
+    id int,
+    name varchar(255)
+);
+
+DESCRIBE test;
+
+ - malumot qoshish
+ - null qilib qoshish
+ - ochirish 
+ - not null qilib yaratish
+
+DROP TABLE test;
+
+INSERT INTO students (id, full_name, birth_date, address, group_id)
+VALUES (1, 'Umarov Aziz', '1997-07-17', 'Andijon', 1);
+
+INSERT INTO students (id, full_name, birth_date, address, group_id)
+VALUES (2, 'Botir Toxirov', '1996-05-10', 'Toshkent', 1);
+
+INSERT INTO students (id, full_name, birth_date, address, group_id)
+VALUES (3, 'Umarov Aziz', '1995-05-13', 'Samarqand', 2);
+
+INSERT INTO students (id, full_name, birth_date, address, group_id)
+VALUES (4, 'Umarov Aziz', '1995-02-26', 'Buxoro', 2);
+
+INSERT INTO teachers (id, full_name)
+VALUES (1, 'Olimova Feruza');
+
+INSERT INTO teachers (id, full_name)
+VALUES (2, 'Kamolov Aziz');
+
+INSERT INTO teachers (id, full_name)
+VALUES (3, 'Qodirov Azamat');
+
+INSERT INTO all_groups(id, name, teacher_id)
+VALUES (1, '100', 2);
+
+INSERT INTO all_groups(id, name, teacher_id)
+VALUES (2, '101', 1);
+
+INSERT INTO all_groups(id, name, teacher_id)
+VALUES (3, '102', 3);
+
+DELETE FROM students where id=1;
